@@ -108,6 +108,51 @@ int countLeaf(struct TreeNode * root){
     return countLeaf(root->left)+countLeaf(root->right);   
 }
 
+int countInternalNodes(struct TreeNode *root)
+{
+    if (root == NULL || (root->left == NULL && root->right == NULL))
+    {
+        return 0;
+    }
+    return 1 + countInternalNodes(root->left) + countInternalNodes(root->right);
+}
+
+int countNodesLinkedList(struct TreeNode *root)
+{
+    if (root == NULL)
+    {
+        return 0;
+    }
+    return 1 + countNodesLinkedList(root->left) + countNodesLinkedList(root->right);
+}
+
+int countNodesArray(struct Node *arr[], int size)
+{
+    int count = 0;
+    for (int i = 0; i < size; i++)
+    {
+        if (arr[i] != NULL)
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
+int countSiblings(struct TreeNode *root, int key)
+{
+    if (root == NULL)
+    {
+        return 0;
+    }
+    if ((root->left != NULL && root->left->data == key && root->right != NULL) ||
+        (root->right != NULL && root->right->data == key && root->left != NULL))
+    {
+        return 1;
+    }
+    return countSiblings(root->left, key) + countSiblings(root->right, key);
+}
+
 void displayMenu(){
     printf("=====Menu=====");
     printf("\n 1. Create binary tree using recursive function : ");
@@ -121,7 +166,7 @@ void displayMenu(){
 }
 
 int main(){
-    int data, n, choice, key, noLeaf;
+    int data, node, choice, key, noLeaf, nointer, sib;
     struct TreeNode *root =NULL;
 
     do
@@ -165,24 +210,29 @@ int main(){
             printf("Number of leaf Nodes : %d \n",noLeaf);
             break;
         case 5:
-            
+            nointer = countInternalNodes(root);
+            printf("Number of internal nodes in the binary tree: %d\n", nointer);
             break;
         case 6:
-            
+            node = countNodesLinkedList(root);
+            printf("Number of nodes in the binary tree (using linked list): %d\n", node);
             break;
         case 7:
-            
+            //write array logic
             break;
         case 8:
-            
-            break;        
+            printf("Enter the node data to find its siblings: ");
+            scanf("%d", &key);
+            sib = countSiblings(root, key);
+            printf("Number of siblings of the node %d: %d\n", key, sib);
+            break;     
+        case 0 : 
+            printf("Exiting the program....>!!");
+            break;   
         default:  
             printf("You entered wrong choice....!!");        
             break;
         }
-       
-
-    
     } while (choice != 0);
     
     return 0;
