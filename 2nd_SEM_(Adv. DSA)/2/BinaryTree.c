@@ -1,4 +1,13 @@
-/*Write a C program to create a binary tree using recursive function and display that level wise.*/
+/*
+Write a C program to create a binary tree using recursive function and display that level wise.
+Write a C program to identify the height of a binary tree.
+Write a C program to identify degree of a given node.
+Write a C program to count number of leaf node present in a binary tree.
+Write a C program to count number of internal node present in a binary tree.
+Write a C program to count number of node present in a given binary tree using linked list.
+Write a C program to count number of node present in a given binary tree using array.
+Write a C program to count number of siblings present in a binary tree.*/
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
@@ -126,7 +135,7 @@ int countNodesLinkedList(struct TreeNode *root)
     return 1 + countNodesLinkedList(root->left) + countNodesLinkedList(root->right);
 }
 
-int countNodesArray(struct Node *arr[], int size)
+int countNodesArray(struct TreeNode *arr[], int size)
 {
     int count = 0;
     for (int i = 0; i < size; i++)
@@ -218,7 +227,8 @@ int main(){
             printf("Number of nodes in the binary tree (using linked list): %d\n", node);
             break;
         case 7:
-            //write array logic
+            node = countNodesArray(root,countNodesLinkedList(root));
+            printf("Number of nodes in the binary tree (using array): %d\n", node);
             break;
         case 8:
             printf("Enter the node data to find its siblings: ");
