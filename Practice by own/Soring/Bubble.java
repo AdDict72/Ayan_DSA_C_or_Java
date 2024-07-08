@@ -9,6 +9,7 @@ public class Bubble {
         System.out.println();
         BubbleSort(arr, len);
     }
+    
     static void BubbleSort(int arr[],int n){
         for(int j =0 ;j<n;j++){
         for(int i = 0 ; i<n-1 ; i++){

@@ -14,7 +14,6 @@ public class insertion {
             System.out.print(arr[k]+" ");
         }
     }
-
     public static void main(String[] args) {
         int arr[] = {5,2,3,4,9,1,6};
         int len = arr.length;
