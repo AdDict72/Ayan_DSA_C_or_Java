@@ -1,7 +1,6 @@
 // Problem Statement: Given an array consisting of only 0s, 1s, and 2s. 
 // Write a program to in-place sort the array without using inbuilt sort functions.
 // ( Expected: Single pass-O(N) and constant space)
-
 // This problem is a variation of the popular Dutch National flag algorithm. 
 
 import java.util.Scanner;
@@ -57,5 +56,6 @@ public class SortAnArrayOfZeroOneTwo {
             arr[i] = element;
         }
         sortedArray(n, arr);
+        sc.close();
     }
 }

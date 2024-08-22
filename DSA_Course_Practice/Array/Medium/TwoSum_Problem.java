@@ -32,5 +32,6 @@ class TwoSum_Problem {
 
         String a = twoSum(n, arr, target);
         System.out.println("Answer for variant 1: " + a);
+        sc.close();
     }
 }
